@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
+    <title data-i18n="page_title">AI 智能前沿 - 研究、模型与应用</title>
+    <!-- 使用 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 基础重置与字体 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
 
+        /* AI/科技主题色板 */
         :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
+            --primary: #007bff; /* 强蓝色 */
+            --secondary: #00aaff; /* 亮蓝色 */
+            --accent: #00c4cc; /* 青色/强调色 */
+            --light: #f0f8ff; /* 极浅蓝色 */
+            --dark: #003366; /* 深海军蓝 */
             --text: #333333;
             --white: #ffffff;
         }
@@ -27,16 +30,18 @@
             background-color: var(--light);
             color: var(--text);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
+        /* 标题栏 */
         header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(to right, var(--dark), var(--primary));
             color: var(--white);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .container {
@@ -50,6 +55,38 @@
             justify-content: space-between;
             align-items: center;
         }
+        
+        /* 语言切换器样式 */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: 1.5rem;
+        }
+
+        .language-switcher button {
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-switcher button:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .language-switcher button.active {
+            background-color: var(--accent);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
 
         .logo {
             display: flex;
@@ -57,12 +94,15 @@
             gap: 10px;
             font-size: 1.8rem;
             font-weight: 700;
+            text-transform: uppercase;
         }
 
         .logo i {
             font-size: 2rem;
+            color: var(--accent);
         }
 
+        /* 导航菜单 */
         nav ul {
             display: flex;
             list-style: none;
@@ -79,6 +119,7 @@
             transition: all 0.3s ease;
             padding: 0.5rem 0;
             position: relative;
+            border-radius: 4px;
         }
 
         nav ul li a:hover {
@@ -89,9 +130,10 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
-            height: 2px;
+            height: 3px;
             background-color: var(--accent);
             transition: width 0.3s ease;
         }
@@ -100,60 +142,71 @@
             width: 100%;
         }
 
+        /* 英雄区 */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
+            /* 抽象AI背景，使用渐变和纹理模拟 */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542831371-29b0f74f9d0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 85vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: var(--white);
+            box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.1);
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 51, 102, 0.15); /* 略微透明的背景 */
+            border-radius: 12px;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 10px rgba(0, 196, 204, 0.8);
+            letter-spacing: 2px;
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
+            font-weight: 300;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
+            color: var(--dark);
+            padding: 0.8rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 196, 204, 0.3);
+            text-transform: uppercase;
         }
 
         .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            background-color: var(--white);
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
         }
 
+        /* 通用区块样式 */
         section {
             padding: 5rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
@@ -170,7 +223,7 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px;
             height: 4px;
             background-color: var(--accent);
             border-radius: 2px;
@@ -178,180 +231,182 @@
 
         .section-title p {
             color: var(--text);
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .about-content {
+        /* AI 前景与趋势 */
+        .prospects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .prospect-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary);
+        }
+
+        .prospect-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .prospect-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .prospect-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        /* 核心模型简介 */
+        .models {
+            background-color: var(--white);
+        }
+
+        .models-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
         }
 
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .model-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .model-item:last-child {
+            border-bottom: none;
         }
 
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
+        .model-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
         }
 
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
+        .model-text h3 {
+            font-size: 1.6rem;
             color: var(--dark);
             margin-bottom: 0.5rem;
         }
-
-        .stat-item p {
-            color: var(--text);
+        
+        .model-text p {
+            font-size: 1rem;
+            color: #666;
         }
-
-        .initiatives {
-            background-color: var(--white);
+        
+        .model-list-container {
+            padding-right: 2rem;
         }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
+        
+        .model-visualization {
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
+        .model-visualization img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            height: auto;
+            display: block;
         }
 
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+        /* AI 应用推荐 (CTA 区域) */
+        .applications {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--white);
             text-align: center;
             padding: 5rem 0;
+            margin-top: 3rem;
         }
 
-        .cta h2 {
+        .applications h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
         }
 
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        .application-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .cta .btn {
+        .app-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--text);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .app-card:hover {
+            transform: scale(1.05);
             background-color: var(--white);
+        }
+
+        .app-card i {
+            font-size: 2rem;
             color: var(--primary);
+            margin-bottom: 0.8rem;
         }
 
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
+        .app-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .app-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
         }
 
+        /* 底部 */
         footer {
             background-color: var(--dark);
             color: var(--white);
-            padding: 3rem 0 1rem;
+            padding: 4rem 0 1rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 2rem;
             margin-bottom: 2rem;
         }
 
         .footer-column h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
+            color: var(--accent);
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .footer-column h3::after {
@@ -359,13 +414,20 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
-            height: 2px;
+            width: 50px;
+            height: 3px;
             background-color: var(--accent);
         }
 
         .footer-column p {
             margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .footer-links {
@@ -380,6 +442,7 @@
             color: var(--light);
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .footer-links li a:hover {
@@ -387,62 +450,38 @@
             padding-left: 5px;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
         .copyright {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
         }
 
         .mobile-menu {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            color: var(--accent);
         }
 
+        /* 响应式设计 */
         @media (max-width: 992px) {
-            .about-content {
+            .prospects-grid, .application-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .models-grid {
                 grid-template-columns: 1fr;
             }
             
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
             .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
@@ -455,15 +494,11 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--primary);
+                background-color: var(--dark);
                 flex-direction: column;
                 padding: 1rem 0;
                 text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav ul.active {
-                display: flex;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             }
             
             nav ul li {
@@ -471,252 +506,455 @@
                 padding: 0.8rem 0;
             }
             
+            nav ul.active {
+                display: flex;
+            }
+            
             .mobile-menu {
                 display: block;
             }
             
-            .initiatives-grid {
-                grid-template-columns: 1fr;
+            .nav-container {
+                justify-content: space-between;
+                padding: 0 10px;
             }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
 
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
+            .language-switcher {
+                margin-right: 0;
+            }
+
+            .prospects-grid, .application-cards, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .models-grid .model-visualization {
+                order: -1; /* 将图片移到列表上方 */
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- 头部/导航 -->
     <header>
         <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
+            <div style="display: flex; align-items: center;">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span data-i18n="logo_text">AI.Frontier</span>
                 </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+            </div>
+            
+            <div style="display: flex; align-items: center;">
+                <div class="language-switcher">
+                    <button id="lang-cn" data-lang="zh">中文</button>
+                    <button id="lang-en" data-lang="en">EN</button>
+                </div>
+                <nav>
+                    <div class="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <ul>
+                        <li><a href="#home" data-i18n="nav_home">首页</a></li>
+                        <li><a href="#prospects" data-i18n="nav_prospects">前景与趋势</a></li>
+                        <li><a href="#models" data-i18n="nav_models">核心大模型</a></li>
+                        <li><a href="#applications" data-i18n="nav_applications">热门应用</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- 英雄区：Slogan 与 CTA -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
+            <h1 data-i18n="hero_title">探索人工智能的无限可能</h1>
+            <p data-i18n="hero_subtitle">洞察前沿研究、解析核心技术，助力您站在 AI 时代的浪潮之巅。</p>
+            <a href="#prospects" class="btn" data-i18n="hero_button">深入了解趋势</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
+    <!-- AI 研究前景与热门方向 -->
+    <section id="prospects">
         <div class="container">
             <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
+                <h2 data-i18n="prospects_title">AI 研究的前景与热门方向</h2>
+                <p data-i18n="prospects_subtitle">人工智能正以前所未有的速度发展，以下是当前最受关注的研究领域和未来趋势。</p>
             </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
+            <div class="prospects-grid">
+                <!-- 趋势卡片 1：通用人工智能 (AGI) -->
+                <div class="prospect-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3 data-i18n="p1_title">通用人工智能 (AGI)</h3>
+                    <p data-i18n="p1_text">AGI 旨在构建具备人类智能水平，能够执行任何智力任务的系统。这是 AI 领域的终极目标，也是当前研究的重点。</p>
                 </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
+                <!-- 趋势卡片 2：多模态学习 -->
+                <div class="prospect-card">
+                    <i class="fas fa-palette"></i>
+                    <h3 data-i18n="p2_title">多模态学习</h3>
+                    <p data-i18n="p2_text">结合文本、图像、语音、视频等多种数据进行学习和推理，使得 AI 系统能更全面地理解世界，实现跨模态交互。</p>
                 </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
+                <!-- 趋势卡片 3：AI 安全与伦理 -->
+                <div class="prospect-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3 data-i18n="p3_title">AI 安全与伦理</h3>
+                    <p data-i18n="p3_text">随着 AI 能力增强，确保其可控、公正、透明，并符合人类价值观成为关键研究方向，关注对齐、可解释性和偏见消除。</p>
                 </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
+                <!-- 趋势卡片 4：边缘 AI 与小型化 -->
+                <div class="prospect-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3 data-i18n="p4_title">边缘 AI 与小型化</h3>
+                    <p data-i18n="p4_text">将复杂的 AI 模型部署到移动设备或物联网 (IoT) 边缘端，降低延迟，保护隐私，推动 AI 的普及。</p>
                 </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
+                <!-- 趋势卡片 5：具身智能 -->
+                <div class="prospect-card">
+                    <i class="fas fa-robot"></i>
+                    <h3 data-i18n="p5_title">具身智能</h3>
+                    <p data-i18n="p5_text">研究如何让 AI 系统具备物理身体，能够在真实世界中感知、行动和交互，例如高级机器人和自动化系统。</p>
                 </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
+                <!-- 趋势卡片 6：AI 辅助科学研究 -->
+                <div class="prospect-card">
+                    <i class="fas fa-flask"></i>
+                    <h3 data-i18n="p6_title">AI 辅助科学研究</h3>
+                    <p data-i18n="p6_text">利用 AI 加速新材料发现、药物研发、气候建模等，成为推动基础科学突破的重要工具。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
+    <!-- 相关大模型的简介 -->
+    <section class="models" id="models">
         <div class="container">
             <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
+                <h2 data-i18n="models_title">核心大型模型简介</h2>
+                <p data-i18n="models_subtitle">大模型是当前 AI 浪潮的核心驱动力，它们在理解和生成人类语言、图像等方面表现出惊人的能力。</p>
             </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
+            <div class="models-grid">
+                <div class="model-list-container">
+                    <!-- 模型卡片 1：GPT 系列 -->
+                    <div class="model-item">
+                        <div class="model-icon"><i class="fas fa-comments"></i></div>
+                        <div class="model-text">
+                            <h3 data-i18n="m1_title">GPT (Generative Pre-trained Transformer)</h3>
+                            <p data-i18n="m1_text">由 OpenAI 开发，以强大的自然语言处理和生成能力著称，是推动生成式 AI 革命的关键模型。</p>
+                        </div>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <!-- 模型卡片 2：Gemini 系列 -->
+                    <div class="model-item">
+                        <div class="model-icon"><i class="fas fa-star"></i></div>
+                        <div class="model-text">
+                            <h3 data-i18n="m2_title">Gemini (Google)</h3>
+                            <p data-i18n="m2_text">Google 发布的最新一代多模态大模型，原生设计支持文本、代码、音频、图像和视频等多种模态输入和输出。</p>
+                        </div>
+                    </div>
+                    <!-- 模型卡片 3：LLaMA 系列 -->
+                    <div class="model-item">
+                        <div class="model-icon"><i class="fas fa-code"></i></div>
+                        <div class="model-text">
+                            <h3 data-i18n="m3_title">LLaMA (Meta)</h3>
+                            <p data-i18n="m3_text">Meta AI 推出的开源大语言模型系列，因其开放性和高效性，成为学术界和企业级应用的重要基石。</p>
+                        </div>
+                    </div>
+                    <!-- 模型卡片 4：Claude 系列 -->
+                    <div class="model-item">
+                        <div class="model-icon"><i class="fas fa-brain"></i></div>
+                        <div class="model-text">
+                            <h3 data-i18n="m4_title">Claude (Anthropic)</h3>
+                            <p data-i18n="m4_text">由 Anthropic 开发，专注于安全和可靠性，在处理复杂推理任务和长文本理解方面表现出色。</p>
+                        </div>
                     </div>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                <div class="model-visualization">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI 脑网络图示">
+                    <!-- Image of AI brain network illustration -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
+    <!-- AI 应用推荐 (CTA) -->
+    <section class="applications" id="applications">
         <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
+            <h2 data-i18n="apps_title">AI 应用推荐：提高效率，激发创意</h2>
+            <p data-i18n="apps_subtitle">利用这些优秀的 AI 工具，轻松解决工作、学习和生活中的各种挑战。</p>
+            <div class="application-cards">
+                <!-- 应用卡片 1：创意写作/内容生成 -->
+                <div class="app-card">
+                    <i class="fas fa-feather-alt"></i>
+                    <h4 data-i18n="app1_title">内容生成与营销</h4>
+                    <p data-i18n="app1_text">利用 AI 写作助手，快速生成文章、邮件和社交媒体内容，大幅提升内容创作效率。</p>
+                    <a href="#" data-i18n="learn_more">了解更多 &rarr;</a>
+                </div>
+                <!-- 应用卡片 2：代码辅助 -->
+                <div class="app-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4 data-i18n="app2_title">编程与调试助手</h4>
+                    <p data-i18n="app2_text">AI 自动补全代码、查找 Bug，甚至将自然语言转化为代码，让开发工作更加轻松高效。</p>
+                    <a href="#" data-i18n="learn_more">了解更多 &rarr;</a>
+                </div>
+                <!-- 应用卡片 3：图像设计 -->
+                <div class="app-card">
+                    <i class="fas fa-magic"></i>
+                    <h4 data-i18n="app3_title">图像生成与设计</h4>
+                    <p data-i18n="app3_text">通过简单的文本描述，AI 即可生成高质量的艺术作品、产品模型图和设计素材。</p>
+                    <a href="#" data-i18n="learn_more">了解更多 &rarr;</a>
+                </div>
+            </div>
+            <a href="#" class="btn" style="margin-top: 2rem;" data-i18n="explore_more">探索更多应用</a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 底部/联系信息 -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                    <h3 data-i18n="footer_about_title">AI.Frontier Hub</h3>
+                    <p data-i18n="footer_about_text1">致力于分享全球 AI 领域最新、最深度的研究进展、模型技术解析和实用应用推荐。</p>
+                    <p data-i18n="footer_about_text2">成为 AI 知识的先行者。</p>
                 </div>
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3 data-i18n="footer_nav_title">快速导航</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home" data-i18n="nav_home">网站首页</a></li>
+                        <li><a href="#prospects" data-i18n="nav_prospects">研究前景</a></li>
+                        <li><a href="#models" data-i18n="nav_models">核心模型</a></li>
+                        <li><a href="#applications" data-i18n="nav_applications">应用推荐</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+                <div class="footer-column contact-info">
+                    <h3 data-i18n="footer_contact_title">联系我们</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer_contact_address">中国，上海市浦东新区张江高科路 1000 号 AI 创新园</span></p>
+                    <p><i class="fas fa-phone"></i> +86 021-8324 5668</p>
+                    <p><i class="fas fa-envelope"></i> <span data-i18n="footer_contact_email">research@aifrontier.com</span></p>
+                    <p><i class="fas fa-fax"></i> +86 021-8324 5669</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+                <p data-i18n="copyright_text">&copy; 2025 AI.Frontier. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
+        // ------------------------------------
+        // 多语言数据
+        // ------------------------------------
+        const langData = {
+            'zh': {
+                'page_title': 'AI 智能前沿 - 研究、模型与应用',
+                'logo_text': 'AI.Frontier',
+                // 导航
+                'nav_home': '首页',
+                'nav_prospects': '前景与趋势',
+                'nav_models': '核心大模型',
+                'nav_applications': '热门应用',
+                'nav_contact': '联系我们',
+                // 英雄区
+                'hero_title': '探索人工智能的无限可能',
+                'hero_subtitle': '洞察前沿研究、解析核心技术，助力您站在 AI 时代的浪潮之巅。',
+                'hero_button': '深入了解趋势',
+                // 研究前景
+                'prospects_title': 'AI 研究的前景与热门方向',
+                'prospects_subtitle': '人工智能正以前所未有的速度发展，以下是当前最受关注的研究领域和未来趋势。',
+                'p1_title': '通用人工智能 (AGI)',
+                'p1_text': 'AGI 旨在构建具备人类智能水平，能够执行任何智力任务的系统。这是 AI 领域的终极目标，也是当前研究的重点。',
+                'p2_title': '多模态学习',
+                'p2_text': '结合文本、图像、语音、视频等多种数据进行学习和推理，使得 AI 系统能更全面地理解世界，实现跨模态交互。',
+                'p3_title': 'AI 安全与伦理',
+                'p3_text': '随着 AI 能力增强，确保其可控、公正、透明，并符合人类价值观成为关键研究方向，关注对齐、可解释性和偏见消除。',
+                'p4_title': '边缘 AI 与小型化',
+                'p4_text': '将复杂的 AI 模型部署到移动设备或物联网 (IoT) 边缘端，降低延迟，保护隐私，推动 AI 的普及。',
+                'p5_title': '具身智能',
+                'p5_text': '研究如何让 AI 系统具备物理身体，能够在真实世界中感知、行动和交互，例如高级机器人和自动化系统。',
+                'p6_title': 'AI 辅助科学研究',
+                'p6_text': '利用 AI 加速新材料发现、药物研发、气候建模等，成为推动基础科学突破的重要工具。',
+                // 核心模型
+                'models_title': '核心大型模型简介',
+                'models_subtitle': '大模型是当前 AI 浪潮的核心驱动力，它们在理解和生成人类语言、图像等方面表现出惊人的能力。',
+                'm1_title': 'GPT (Generative Pre-trained Transformer)',
+                'm1_text': '由 OpenAI 开发，以强大的自然语言处理和生成能力著称，是推动生成式 AI 革命的关键模型。',
+                'm2_title': 'Gemini (Google)',
+                'm2_text': 'Google 发布的最新一代多模态大模型，原生设计支持文本、代码、音频、图像和视频等多种模态输入和输出。',
+                'm3_title': 'LLaMA (Meta)',
+                'm3_text': 'Meta AI 推出的开源大语言模型系列，因其开放性和高效性，成为学术界和企业级应用的重要基石。',
+                'm4_title': 'Claude (Anthropic)',
+                'm4_text': '由 Anthropic 开发，专注于安全和可靠性，在处理复杂推理任务和长文本理解方面表现出色。',
+                // 应用推荐
+                'apps_title': 'AI 应用推荐：提高效率，激发创意',
+                'apps_subtitle': '利用这些优秀的 AI 工具，轻松解决工作、学习和生活中的各种挑战。',
+                'app1_title': '内容生成与营销',
+                'app1_text': '利用 AI 写作助手，快速生成文章、邮件和社交媒体内容，大幅提升内容创作效率。',
+                'app2_title': '编程与调试助手',
+                'app2_text': 'AI 自动补全代码、查找 Bug，甚至将自然语言转化为代码，让开发工作更加轻松高效。',
+                'app3_title': '图像生成与设计',
+                'app3_text': '通过简单的文本描述，AI 即可生成高质量的艺术作品、产品模型图和设计素材。',
+                'learn_more': '了解更多 &rarr;',
+                'explore_more': '探索更多应用',
+                // 底部
+                'footer_about_title': 'AI.Frontier Hub',
+                'footer_about_text1': '致力于分享全球 AI 领域最新、最深度的研究进展、模型技术解析和实用应用推荐。',
+                'footer_about_text2': '成为 AI 知识的先行者。',
+                'footer_nav_title': '快速导航',
+                'footer_contact_title': '联系我们',
+                'footer_contact_address': '中国，上海市浦东新区张江高科路 1000 号 AI 创新园',
+                'footer_contact_email': 'research@aifrontier.com',
+                'copyright_text': '&copy; 2025 AI.Frontier. 版权所有。',
+            },
+            'en': {
+                'page_title': 'AI Intelligence Frontier - Research, Models & Applications',
+                'logo_text': 'AI.Frontier',
+                // Navigation
+                'nav_home': 'Home',
+                'nav_prospects': 'Prospects & Trends',
+                'nav_models': 'Core Models',
+                'nav_applications': 'Hot Applications',
+                'nav_contact': 'Contact Us',
+                // Hero
+                'hero_title': 'Exploring the Infinite Possibilities of AI',
+                'hero_subtitle': 'Gain insight into cutting-edge research and core technologies to stand at the forefront of the AI era.',
+                'hero_button': 'Explore Trends',
+                // Research Prospects
+                'prospects_title': 'Prospects and Hot Directions in AI Research',
+                'prospects_subtitle': 'Artificial intelligence is evolving at an unprecedented pace. Here are the most focused areas of research and future trends.',
+                'p1_title': 'Artificial General Intelligence (AGI)',
+                'p1_text': 'AGI aims to build systems capable of performing any intellectual task at a human level. This is the ultimate goal and a key focus of current research.',
+                'p2_title': 'Multimodal Learning',
+                'p2_text': 'Combining various data types (text, images, voice, video) for learning and reasoning, enabling AI systems to understand the world more comprehensively and achieve cross-modal interaction.',
+                'p3_title': 'AI Safety & Ethics',
+                'p3_text': 'As AI capabilities grow, ensuring systems are controllable, fair, transparent, and aligned with human values becomes critical, focusing on alignment, explainability, and bias removal.',
+                'p4_title': 'Edge AI & Miniaturization',
+                'p4_text': 'Deploying complex AI models onto mobile devices or IoT edge nodes to reduce latency, protect privacy, and accelerate AI adoption.',
+                'p5_title': 'Embodied AI',
+                'p5_text': 'Research into giving AI systems physical bodies, allowing them to perceive, act, and interact in the real world, such as advanced robotics and automation systems.',
+                'p6_title': 'AI-Assisted Scientific Research',
+                'p6_text': 'Leveraging AI to accelerate new material discovery, drug development, and climate modeling, becoming a vital tool for driving breakthroughs in basic science.',
+                // Core Models
+                'models_title': 'Introduction to Core Large Models',
+                'models_subtitle': 'Large models are the core driver of the current AI wave, demonstrating astonishing abilities in understanding and generating human language and images.',
+                'm1_title': 'GPT (Generative Pre-trained Transformer)',
+                'm1_text': 'Developed by OpenAI, known for its powerful NLP and generation capabilities, it is the key model driving the generative AI revolution.',
+                'm2_title': 'Gemini (Google)',
+                'm2_text': 'Google\'s latest generation of multimodal large models, natively designed to support various input and output modalities, including text, code, audio, image, and video.',
+                'm3_title': 'LLaMA (Meta)',
+                'm3_text': 'Meta AI\'s open-source large language model series, which has become a crucial foundation for academic and enterprise applications due to its openness and efficiency.',
+                'm4_title': 'Claude (Anthropic)',
+                'm4_text': 'Developed by Anthropic, focusing on safety and reliability, it excels in handling complex reasoning tasks and long-text comprehension.',
+                // Applications
+                'apps_title': 'AI Application Recommendations: Boost Efficiency, Spark Creativity',
+                'apps_subtitle': 'Use these excellent AI tools to easily solve various challenges in work, study, and life.',
+                'app1_title': 'Content Generation & Marketing',
+                'app1_text': 'Use AI writing assistants to quickly generate articles, emails, and social media content, significantly boosting content creation efficiency.',
+                'app2_title': 'Programming & Debugging Assistant',
+                'app2_text': 'AI auto-completes code, finds bugs, and even converts natural language into code, making development work easier and more efficient.',
+                'app3_title': 'Image Generation & Design',
+                'app3_text': 'AI can generate high-quality artwork, product mockups, and design materials from simple text descriptions.',
+                'learn_more': 'Learn More &rarr;',
+                'explore_more': 'Explore More Applications',
+                // Footer
+                'footer_about_title': 'AI.Frontier Hub',
+                'footer_about_text1': 'Dedicated to sharing the latest and deepest research progress, model technology analysis, and practical application recommendations in the global AI field.',
+                'footer_about_text2': 'Be a pioneer in AI knowledge.',
+                'footer_nav_title': 'Quick Navigation',
+                'footer_contact_title': 'Contact Us',
+                'footer_contact_address': 'AI Innovation Park, 1000 Zhangjiang Hi-Tech Road, Pudong New Area, Shanghai, China',
+                'footer_contact_email': 'research@aifrontier.com',
+                'copyright_text': '&copy; 2025 AI.Frontier. All Rights Reserved.',
+            }
+        };
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
+        let currentLang = 'zh'; // Default language
+
+        // ------------------------------------
+        // 核心翻译逻辑
+        // ------------------------------------
+        function updateContent(lang) {
+            currentLang = lang;
+            const content = langData[lang];
             
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
+            // 1. 更新所有 data-i18n 元素
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (content[key]) {
+                    element.innerHTML = content[key];
                 }
             });
+
+            // 2. 更新页面 <title>
+            const titleKey = document.head.querySelector('title').getAttribute('data-i18n');
+            if (content[titleKey]) {
+                document.title = content[titleKey];
+            }
+            
+            // 3. 更新语言按钮状态
+            document.querySelectorAll('.language-switcher button').forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-lang') === lang) {
+                    button.classList.add('active');
+                }
+            });
+
+            // 4. 更新HTML根元素的lang属性
+            document.documentElement.lang = lang;
         }
 
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
+        // ------------------------------------
+        // 语言初始化和事件监听
+        // ------------------------------------
+        function getInitialLanguage() {
+            // 1. 检查 Local Storage 中是否有用户选择的语言
+            const savedLang = localStorage.getItem('siteLang');
+            if (savedLang) return savedLang;
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+            // 2. 检查浏览器语言
+            const browserLang = navigator.language.toLowerCase();
+            // 简单判断是否为中文 (zh-CN, zh-TW, zh-HK, zh-SG, etc.)
+            if (browserLang.startsWith('zh')) return 'zh';
+            
+            // 3. 默认为英文
+            return 'en'; 
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialLang = getInitialLanguage();
+            updateContent(initialLang);
+
+            // 绑定语言切换按钮事件
+            document.querySelectorAll('.language-switcher button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const newLang = this.getAttribute('data-lang');
+                    localStorage.setItem('siteLang', newLang); // 保存用户选择
+                    updateContent(newLang);
+                });
+            });
+
+            // 移动菜单切换功能
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('nav ul').classList.toggle('active');
+            });
+
+            // 导航链接平滑滚动功能
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
                     
-                    document.querySelector('nav ul').classList.remove('active');
-                }
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        // 滚动到目标位置，减去头部高度（80px）以避免被 sticky header 遮挡
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // 滚动后关闭移动菜单
+                        document.querySelector('nav ul').classList.remove('active');
+                    }
+                });
             });
         });
     </script>
 </body>
-
 </html>
